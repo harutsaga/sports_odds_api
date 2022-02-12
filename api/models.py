@@ -34,7 +34,7 @@ class MarketType(models.TextChoices):
 
 class Event(models.Model):
     sports = models.CharField(max_length=255, choices=SportsType.choices,
-                              default=SportsType.BASKETBALL, db_index=True, help_text=_('Sport Type'))
+                              default=SportsType.BASKETBALL, db_index=True, help_text=_('Sports'))
     league = models.CharField(max_length=255, choices=League.choices, default=League.NBA,
                               db_index=True, help_text=_('League'))
     # name of the event
@@ -51,33 +51,34 @@ class Event(models.Model):
     homeName = models.CharField(max_length=255, null=True, blank=True, db_index=True,
                                 help_text=_('Home team name'))  # Atlantic Division
     # event id
-    e_id = models.CharField(max_length=255, null=True, db_index=True)
+    e_id = models.CharField(max_length=255, null=True, db_index=True, help_text=_('ID of the event'))
+
     # english name
-    english_name = models.CharField(max_length=255, null=True, db_index=True)
+    english_name = models.CharField(max_length=255, null=True, db_index=True, help_text=_('Name of the event'))
 
     def __str__(self):
         return f'{self.sports} - {self.league} - {self.name}'
 
 
 class BookieEvent(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.DO_NOTHING, related_name='event', null=True)
-    self_event_id = models.CharField(max_length=255, db_index=True)
-    bookie = models.CharField(max_length=255, choices=Bookie.choices, default=Bookie.TWINSPIRES)
+    event = models.ForeignKey(Event, on_delete=models.DO_NOTHING, related_name='event', null=True, help_text=_('Event')) # ? add example
+    self_event_id = models.CharField(max_length=255, db_index=True, help_text=_('Event ID')) # ? add example
+    bookie = models.CharField(max_length=255, choices=Bookie.choices, default=Bookie.TWINSPIRES, help_text=_('Bookie')) # ? add example
 
 
 class Selection(models.Model):
-    name = models.CharField(max_length=255, null=True, blank=True, db_index=True)
-    odds = models.FloatField(default=1, null=True)
-    oddsAmerican = models.FloatField(default=1, null=True)
-    line = models.CharField(max_length=255, null=True, blank=True)
-    self_selection_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
-    self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
-    updateTime = models.DateTimeField(null=True, blank=True)
-    self_event_id = models.CharField(max_length=255, db_index=True, null=True)
+    name = models.CharField(max_length=255, null=True, blank=True, db_index=True, help_text=_('Name of the selection'))
+    updateTime = models.DateTimeField(null=True, blank=True, help_text=_('Update time'))
+    odds = models.FloatField(default=1, null=True, help_text=_('Odds for this selection'))
+    oddsAmerican = models.FloatField(default=1, null=True, help_text=_('American odds for this selection'))
+    line = models.CharField(max_length=255, null=True, blank=True, help_text=_('Line of the selection')) # ? add example
+    self_selection_id = models.CharField(max_length=255, null=True, blank=True, db_index=True, help_text=_('self selection id'))# ? add example
+    self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True, help_text=_('self market id'))# ? add example
+    self_event_id = models.CharField(max_length=255, db_index=True, null=True, help_text=_('self event id'))
 
 
 class Market(models.Model):
-    self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
-    market_type = models.CharField(max_length=255, choices=MarketType.choices, default=MarketType.SPREAD)
-    selection = models.ManyToManyField(Selection, blank=True)
-    self_event_id = models.CharField(max_length=255, db_index=True, null=True)
+    self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True, help_text=_('self market id'))# ? add example
+    market_type = models.CharField(max_length=255, choices=MarketType.choices, default=MarketType.SPREAD, help_text=_('Market type'))# ? add example
+    selection = models.ManyToManyField(Selection, blank=True, help_text=_('Selections for this market'))
+    self_event_id = models.CharField(max_length=255, db_index=True, null=True, help_text=_('Events for this market'))

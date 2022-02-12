@@ -3352,3 +3352,160 @@ NameError: name 'r' is not defined
 2022-02-12 01:52:09,639 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
 2022-02-12 01:52:10,642 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:5720][0m
 2022-02-12 01:52:10,837 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.00, 127.0.0.1:5720][0m
+2022-02-12 01:56:44,848 [ThreadPoolEx] [WARNI] [django.request      ]  Unauthorized: /api/bookies
+2022-02-12 01:56:44,850 [django-main-] [WARNI] [django.channels.serv]  [31;1mHTTP GET /api/bookies 401 [0.00, 127.0.0.1:11525][0m
+2022-02-12 01:56:52,129 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 01:56:54,077 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 01:56:54,225 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 01:56:54,226 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 01:56:54,227 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 01:56:55,369 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /api/bookies 200 [0.01, 127.0.0.1:6761][0m
+2022-02-12 01:57:30,397 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 01:57:31,808 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 01:57:31,985 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 01:57:31,986 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 01:57:31,987 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 01:57:33,076 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:6791][0m
+2022-02-12 01:57:33,291 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:6791][0m
+2022-02-12 01:57:39,789 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /api/sports 200 [0.00, 127.0.0.1:6791][0m
+2022-02-12 01:58:24,420 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 01:58:25,844 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 01:58:26,007 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 01:58:26,007 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 01:58:26,008 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 01:58:26,052 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.02, 127.0.0.1:4396][0m
+2022-02-12 01:58:26,235 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:4396][0m
+2022-02-12 01:58:30,262 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /api/market 200 [0.00, 127.0.0.1:4396][0m
+2022-02-12 01:59:31,503 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 01:59:32,943 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 01:59:33,105 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 01:59:33,105 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 01:59:33,106 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 01:59:33,165 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.02, 127.0.0.1:8752][0m
+2022-02-12 01:59:33,342 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:8752][0m
+2022-02-12 01:59:45,564 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /api/event 200 [0.01, 127.0.0.1:8752][0m
+2022-02-12 02:00:04,986 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:00:06,387 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:00:06,541 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:00:06,542 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:00:06,543 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:00:26,414 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\models.py changed, reloading.
+2022-02-12 02:00:27,867 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:00:28,034 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:00:28,035 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:00:28,035 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:01:21,452 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\models.py changed, reloading.
+2022-02-12 02:01:22,875 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:01:23,045 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:01:23,046 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:01:23,047 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:04:37,444 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\models.py changed, reloading.
+2022-02-12 02:04:38,882 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:04:39,039 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:04:39,040 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:04:39,041 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:04:42,496 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:3980][0m
+2022-02-12 02:04:42,721 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:3980][0m
+2022-02-12 02:04:47,282 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /api/event 200 [0.01, 127.0.0.1:3980][0m
+2022-02-12 02:05:09,976 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\serializers.py changed, reloading.
+2022-02-12 02:05:11,349 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:05:11,514 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:05:11,515 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:05:11,516 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:05:18,323 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\serializers.py changed, reloading.
+2022-02-12 02:05:19,677 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:05:19,839 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:05:19,839 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:05:19,840 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:05:32,097 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\serializers.py changed, reloading.
+2022-02-12 02:05:33,502 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:05:33,645 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:05:33,646 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:05:33,646 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:07:02,887 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:07:04,336 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:07:04,492 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:07:04,493 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:07:04,494 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:08:03,274 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:3616][0m
+2022-02-12 02:08:03,544 [ThreadPoolEx] [ERROR] [django.request      ]  Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\renderers.py", line 35, in render
+    return codec.encode(data)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\codecs.py", line 82, in encode
+    return force_bytes(self._dump_dict(spec))
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\codecs.py", line 125, in _dump_dict
+    return json.dumps(spec)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+2022-02-12 02:08:03,550 [django-main-] [ERROR] [django.channels.serv]  [35;1mHTTP GET /swagger/?format=openapi 500 [0.07, 127.0.0.1:3616][0m
+2022-02-12 02:08:27,566 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:08:29,019 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:08:29,167 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:08:29,168 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:08:29,168 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:08:29,237 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.03, 127.0.0.1:3645][0m
+2022-02-12 02:08:29,507 [ThreadPoolEx] [ERROR] [django.request      ]  Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\renderers.py", line 35, in render
+    return codec.encode(data)
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\codecs.py", line 82, in encode
+    return force_bytes(self._dump_dict(spec))
+  File "F:\Projects\6 SportsOddsApi\sports_odds_api\venv\lib\site-packages\drf_yasg\codecs.py", line 125, in _dump_dict
+    return json.dumps(spec)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "c:\users\david piao\appdata\local\programs\python\python38\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SerializerMetaclass is not JSON serializable
+2022-02-12 02:08:29,512 [django-main-] [ERROR] [django.channels.serv]  [35;1mHTTP GET /swagger/?format=openapi 500 [0.05, 127.0.0.1:3645][0m
+2022-02-12 02:08:44,758 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:08:46,179 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:08:46,333 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:08:46,333 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:08:46,334 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:08:48,084 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:3668][0m
+2022-02-12 02:08:48,290 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:3668][0m
+2022-02-12 02:09:08,591 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:09:10,025 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:09:10,178 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:09:10,179 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:09:10,180 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:09:10,272 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.01, 127.0.0.1:3694][0m
+2022-02-12 02:09:10,477 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:3694][0m
+2022-02-12 02:10:12,480 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:10:13,924 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:10:14,083 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:10:14,083 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:10:14,084 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:10:15,634 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.02, 127.0.0.1:3527][0m
+2022-02-12 02:10:15,856 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:3527][0m
+2022-02-12 02:44:57,105 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger.yaml 200 [0.02, 127.0.0.1:12546][0m
+2022-02-12 02:46:01,643 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.

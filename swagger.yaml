@@ -1,0 +1,287 @@
+swagger: '2.0'
+info:
+  title: Sports Odds API
+  description: Documentation of API for Sports Odds Integration v1.
+  version: v1
+host: localhost:8000
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /bookies:
+    get:
+      operationId: get_bookies
+      description: Get all supported bookies.
+      parameters: []
+      responses:
+        '200':
+          description: Bookie names
+          schema:
+            type: array
+            items:
+              type: string
+      tags:
+        - bookies
+    parameters: []
+  /event:
+    get:
+      operationId: event_list
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          description: A page number within the paginated result set.
+          required: false
+          type: integer
+        - name: page_size
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            title: PagedEvent
+            description: Show paged results of Event
+            required:
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              total_pages:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Event'
+      tags:
+        - event
+    parameters: []
+  /market:
+    get:
+      operationId: get_markets
+      description: Get all supported market types.
+      parameters: []
+      responses:
+        '200':
+          description: Market type names
+          schema:
+            type: array
+            items:
+              type: string
+      tags:
+        - market
+    parameters: []
+  /selection:
+    get:
+      operationId: selection_list
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          description: A page number within the paginated result set.
+          required: false
+          type: integer
+        - name: page_size
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            title: PagedBookieLink
+            description: Show paged results of BookieLink
+            required:
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              total_pages:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/BookieLink'
+      tags:
+        - selection
+    parameters: []
+  /sports:
+    get:
+      operationId: get_sports
+      description: Get all supported sports types.
+      parameters: []
+      responses:
+        '200':
+          description: Sports type names
+          schema:
+            type: array
+            items:
+              type: string
+      tags:
+        - sports
+    parameters: []
+definitions:
+  Event:
+    required:
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      sports:
+        title: Sports
+        description: Sports
+        type: string
+        enum:
+          - Basketball
+          - Baseball
+          - Ice Hockey
+          - Football
+      league:
+        title: League
+        description: League
+        type: string
+        enum:
+          - NBA
+          - MLB
+          - NHL
+          - NFL
+      name:
+        title: Name
+        description: Name of the event. e.g., Metropolitan Division @ Atlantic Division
+        type: string
+        maxLength: 255
+        minLength: 1
+      startTime:
+        title: StartTime
+        description: Start time of the event
+        type: string
+        format: date-time
+        x-nullable: true
+      updateTime:
+        title: UpdateTime
+        description: Updated time
+        type: string
+        format: date-time
+        x-nullable: true
+      awayName:
+        title: AwayName
+        description: Away team name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      homeName:
+        title: HomeName
+        description: Home team name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      e_id:
+        title: E id
+        description: ID of the event
+        type: string
+        maxLength: 255
+        minLength: 1
+        x-nullable: true
+      english_name:
+        title: English name
+        description: Name of the event
+        type: string
+        maxLength: 255
+        minLength: 1
+        x-nullable: true
+  BookieLink:
+    required:
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      sports:
+        title: Sports
+        description: Sports
+        type: string
+        enum:
+          - Basketball
+          - Baseball
+          - Ice Hockey
+          - Football
+      league:
+        title: League
+        description: League
+        type: string
+        enum:
+          - NBA
+          - MLB
+          - NHL
+          - NFL
+      name:
+        title: Name
+        description: Name of the event. e.g., Metropolitan Division @ Atlantic Division
+        type: string
+        maxLength: 255
+        minLength: 1
+      startTime:
+        title: StartTime
+        description: Start time of the event
+        type: string
+        format: date-time
+        x-nullable: true
+      updateTime:
+        title: UpdateTime
+        description: Updated time
+        type: string
+        format: date-time
+        x-nullable: true
+      awayName:
+        title: AwayName
+        description: Away team name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      homeName:
+        title: HomeName
+        description: Home team name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      english_name:
+        title: English name
+        description: Name of the event
+        type: string
+        maxLength: 255
+        minLength: 1
+        x-nullable: true
+      target_bookies:
+        title: Target bookies
+        type: string
+        readOnly: true

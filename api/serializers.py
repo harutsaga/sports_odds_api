@@ -3,12 +3,7 @@ from django.contrib import auth
 from django.db import models
 from django.db. models import Q
 from .models import Event, BookieEvent, Selection, Market
-# from .models import Notification, Competition, Bookie, BetType, BetHistory, BookieAccount, BotStatus
 
-# class NotificationSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Notification
-#         fields = '__all__'
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
@@ -17,7 +12,6 @@ class EventSerializer(serializers.ModelSerializer):
 class SelectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Selection
-        # fields = '__all__'
         fields = ['name', 'odds', 'oddsAmerican', 'line', 'updateTime']
 
 class MarketSerializer(serializers.ModelSerializer):
@@ -25,7 +19,6 @@ class MarketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Market
-        # fields = '__all__'
         fields = ['market_type', 'selection']
 
 class BookieEventSerializer(serializers.ModelSerializer):
@@ -54,8 +47,7 @@ class BookieLinkSerializer(serializers.ModelSerializer):
 
     def get_target_bookies(self, obj):
         try:            
-            # serial = BookieEventSerializer(BookieEvent.objects.filter(event__id=obj.id), many=True)
             serial = BookieEventSerializer(BookieEvent.objects.filter(event__id=obj.id), many=True)
             return list(serial.data)
         except:
-            pass
+            return []
