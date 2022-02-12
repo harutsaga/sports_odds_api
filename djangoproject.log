@@ -3232,3 +3232,4 @@ NameError: name 'r' is not defined
 2022-02-11 08:08:38,978 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
 2022-02-11 08:08:39,203 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
 2022-02-11 08:08:39,204 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=127.0.0.1
+2022-02-11 08:08:39,205 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 127.0.0.1:8000
