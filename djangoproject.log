@@ -3509,3 +3509,9 @@ TypeError: Object of type SerializerMetaclass is not JSON serializable
 2022-02-12 02:10:15,856 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:3527][0m
 2022-02-12 02:44:57,105 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger.yaml 200 [0.02, 127.0.0.1:12546][0m
 2022-02-12 02:46:01,643 [MainThread  ] [INFO ] [django.utils.autorel]  F:\Projects\6 SportsOddsApi\sports_odds_api\api\views.py changed, reloading.
+2022-02-12 02:46:03,073 [MainThread  ] [INFO ] [django.utils.autorel]  Watching for file changes with StatReloader
+2022-02-12 02:46:03,243 [django-main-] [INFO ] [daphne.server       ]  HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2022-02-12 02:46:03,243 [django-main-] [INFO ] [daphne.server       ]  Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2022-02-12 02:46:03,244 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
+2022-02-12 02:46:06,011 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.02, 127.0.0.1:12392][0m
+2022-02-12 02:46:06,224 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:12392][0m
