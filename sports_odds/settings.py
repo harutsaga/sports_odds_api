@@ -32,13 +32,13 @@ DEBUG = True
 
 ###
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*','192.168.1.108']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*', '192.168.1.108']
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
-    'api.apps.AppConfig',    
+    'api.apps.AppConfig',
     'channels',
     'django_celery_beat',
     'django.contrib.admin',
@@ -47,20 +47,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',    
-    'corsheaders',    
+    'django.contrib.sites',
+
+    # third party packages
+    'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',    
+    'rest_framework.authtoken',
+    'rest_framework_swagger',
+    'django_filters',
+
+
+    # swagger ui documentation generator
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASS': (
         'rest_framework.renderers.JSONRenderer',
-    )
-    ,
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.PageNumberPaginationWithCount',
+    'PAGE_SIZE': 20,
 }
 
 MIDDLEWARE = [
@@ -97,21 +107,42 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sports_odds.wsgi.application'
 
 
+SWAGGER_SETTINGS = {
+    'DEFAULT_PAGINATOR_INSPECTORS': [
+        'api.inspector.PageNumberPaginationWithCountInspector',
+        'drf_yasg.inspectors.DjangoRestResponsePagination',
+        'drf_yasg.inspectors.CoreAPICompatInspector',
+    ],
+    'SECURITY_DEFINITIONS': None,
+    # {
+    #     'basic': {
+    #         'type': 'basic'
+    #     }
+    #     # 'Token': {
+    #     #     'type': 'apiKey',
+    #     #     'name': 'Authorization',
+    #     #     'in': 'header'
+    #     # }
+    # },
+    'OPERATIONS_SORTER': None,
+    'REQUIRED_PROPS_FIRST': True,
+}
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_sports_odds',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'fisurk2016',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
         },
-    },    
+    },
 }
 
 
@@ -160,9 +191,9 @@ LOGIN_URL = '/login/'
 # Channels
 ASGI_APPLICATION = 'sports_odds.routing.application'
 
-APPEND_SLASH  =  False
+APPEND_SLASH = False
 
-CHANNEL_LAYERS  =  { 
+CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
@@ -187,7 +218,6 @@ CELERY_SEND_TASK_ERROR_EMAILS = True
 CELERY_TIMEZONE = 'UTC'
 
 from .logger import LOGGING
-
 #AUTH_USER_MODEL = 'backend.User'
 
 SITE_ID = 1

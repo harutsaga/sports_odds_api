@@ -5,7 +5,9 @@ django-cors-headers
 django-manifest-loader
 django-mysql
 django-filter
+django-rest-swagger
 drf-jwt
+drf-yasg
 gevent
 httpx
 lxml

@@ -1,13 +1,15 @@
 from django.db import models
-from datetime import datetime   
+from datetime import datetime
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+
 class Bookie(models.TextChoices):
     DRAFTKING = 'Draft Kings', _('Draft Kings')
     FANDUEL = 'Fanduel', _('Fanduel')
-    TWINSPIRES = 'TwinSpires', _('TwinSpires')    
+    TWINSPIRES = 'TwinSpires', _('TwinSpires')
+
 
 class SportsType(models.TextChoices):
     BASKETBALL = 'Basketball', _('Basketball')
@@ -15,11 +17,13 @@ class SportsType(models.TextChoices):
     ICE_HOCKEY = 'Ice Hockey', _('Ice Hockey')
     FOOTBALL = 'Football', _('Football')
 
+
 class League(models.TextChoices):
-    NBA = 'NBA', _('NBA')   #National Basketball Association
-    MLB = 'MLB', _('MLB')   #Major League of Baseball
-    NHL = 'NHL', _('NHL')   #Mational Hockey League
-    NFL = 'NFL', _('NFL')    #National Football League
+    NBA = 'NBA', _('NBA')  # National Basketball Association
+    MLB = 'MLB', _('MLB')  # Major League of Baseball
+    NHL = 'NHL', _('NHL')  # Mational Hockey League
+    NFL = 'NFL', _('NFL')  # National Football League
+
 
 class MarketType(models.TextChoices):
     SPREAD = 'Spread', _('Spread')
@@ -27,19 +31,25 @@ class MarketType(models.TextChoices):
     MONEYLINE = 'Money Line', _('Money line')
     ALTERNATIVE_SPREAD = 'Alternative Spreads', _('Alternative Spreads')
 
+
 class Event(models.Model):
-    sports = models.CharField(max_length=255, choices=SportsType.choices, default=SportsType.BASKETBALL, db_index=True)
-    league = models.CharField(max_length=255, choices=League.choices, default=League.NBA, db_index=True)
+    sports = models.CharField(max_length=255, choices=SportsType.choices,
+                              default=SportsType.BASKETBALL, db_index=True, help_text=_('Sport Type'))
+    league = models.CharField(max_length=255, choices=League.choices, default=League.NBA,
+                              db_index=True, help_text=_('League'))
     # name of the event
-    name = models.CharField(max_length=255, db_index=True)  #Metropolitan Division @ Atlantic Division
+    name = models.CharField(max_length=255, db_index=True, help_text=_('Name of the event. e.g., Metropolitan Division @ Atlantic Division')
+                            )  # Metropolitan Division @ Atlantic Division
     # start time
-    startTime = models.DateTimeField(null=True, blank=True, db_index=True)
+    startTime = models.DateTimeField(null=True, blank=True, db_index=True, help_text=_('Start time of the event'))
     # update time
-    updateTime = models.DateTimeField(null=True, blank=True)
+    updateTime = models.DateTimeField(null=True, blank=True, help_text=_('Updated time'))
     # away
-    awayName = models.CharField(max_length=255, null=True, blank=True, db_index=True)  #Metropolitan Division
+    awayName = models.CharField(max_length=255, null=True, blank=True, db_index=True,
+                                help_text=_('Away team name'))  # Metropolitan Division
     # home
-    homeName = models.CharField(max_length=255, null=True, blank=True, db_index=True)  #Atlantic Division
+    homeName = models.CharField(max_length=255, null=True, blank=True, db_index=True,
+                                help_text=_('Home team name'))  # Atlantic Division
     # event id
     e_id = models.CharField(max_length=255, null=True, db_index=True)
     # english name
@@ -48,10 +58,12 @@ class Event(models.Model):
     def __str__(self):
         return f'{self.sports} - {self.league} - {self.name}'
 
-class BookieEvent(models.Model):    
+
+class BookieEvent(models.Model):
     event = models.ForeignKey(Event, on_delete=models.DO_NOTHING, related_name='event', null=True)
-    self_event_id = models.CharField(max_length=255, db_index=True)    
+    self_event_id = models.CharField(max_length=255, db_index=True)
     bookie = models.CharField(max_length=255, choices=Bookie.choices, default=Bookie.TWINSPIRES)
+
 
 class Selection(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True, db_index=True)
@@ -61,10 +73,11 @@ class Selection(models.Model):
     self_selection_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
     self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
     updateTime = models.DateTimeField(null=True, blank=True)
-    self_event_id = models.CharField(max_length=255, db_index=True, null=True)   
-    
+    self_event_id = models.CharField(max_length=255, db_index=True, null=True)
+
+
 class Market(models.Model):
     self_market_id = models.CharField(max_length=255, null=True, blank=True, db_index=True)
     market_type = models.CharField(max_length=255, choices=MarketType.choices, default=MarketType.SPREAD)
-    selection = models.ManyToManyField(Selection, blank=True)    
-    self_event_id = models.CharField(max_length=255, db_index=True, null=True)   
+    selection = models.ManyToManyField(Selection, blank=True)
+    self_event_id = models.CharField(max_length=255, db_index=True, null=True)
