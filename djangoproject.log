@@ -3515,3 +3515,9 @@ TypeError: Object of type SerializerMetaclass is not JSON serializable
 2022-02-12 02:46:03,244 [django-main-] [INFO ] [daphne.server       ]  Listening on TCP address 0.0.0.0:8000
 2022-02-12 02:46:06,011 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/ 200 [0.02, 127.0.0.1:12392][0m
 2022-02-12 02:46:06,224 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET /swagger/?format=openapi 200 [0.01, 127.0.0.1:12392][0m
+2022-02-13 01:33:41,122 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET / 200 [0.02, 167.172.176.12:61953][0m
+2022-02-13 03:06:14,598 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET / 200 [0.01, 167.94.138.119:54796][0m
+2022-02-13 03:06:15,090 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET / 200 [0.01, 167.94.138.119:56428][0m
+2022-02-13 03:06:15,588 [ThreadPoolEx] [WARNI] [django.request      ]  Not Found: *
+2022-02-13 03:06:15,589 [django-main-] [WARNI] [django.channels.serv]  [33mHTTP PRI * 404 [0.02, 167.94.138.119:38648][0m
+2022-02-13 07:48:54,337 [django-main-] [INFO ] [django.channels.serv]  [mHTTP GET / 200 [0.00, 192.241.208.240:50018][0m
