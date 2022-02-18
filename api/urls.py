@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.authtoken.views import obtain_auth_token
 from api import views
@@ -12,8 +12,4 @@ urlpatterns = static(settings.CSS_URL, document_root=settings.CSS_ROOT) + [
     path('api/event', views.EventView.as_view()),
     path('api/selection', views.SelectionView.as_view()),            
     path('api/market', views.MarketView.as_view()),    
-    re_path(r'^.*$', views.index),    
 ] 
-
-urlpatterns = format_suffix_patterns(urlpatterns)
-
