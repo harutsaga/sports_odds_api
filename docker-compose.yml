@@ -27,7 +27,7 @@ services:
   backend:
     build:
       dockerfile: Dockerfile
-      context: ./backend
+      context: ./
     command: gunicorn sports_odds.wsgi:application --bind 0.0.0.0:8000
     expose:
       - "8000"
@@ -42,7 +42,7 @@ services:
   daphne:
     build:
       dockerfile: Dockerfile
-      context: ./backend
+      context: ./
     working_dir: /home/user/app
     command: bash -c "daphne -b 0.0.0.0 -p 9542 sports_odds.asgi:application"
     volumes:
@@ -60,7 +60,7 @@ services:
   celery:
     build:
       dockerfile: Dockerfile
-      context: ./backend
+      context: ./
     command: celery -A sports_odds worker -l info --pool=gevent --concurrency=500
     volumes:
       - ./:/home/user/app/
