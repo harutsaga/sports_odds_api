@@ -169,7 +169,7 @@ if USE_DOCKER:
         os.path.join(BACKEND_DIR, 'static')
         # os.path.join(FRONTEND_DIR, 'static')
     ]
-    STATIC_ROOT = '/home/user/static'
+    STATIC_ROOT = '/home/user/staticfiles'
     MEDIA_ROOT = os.path.join(FRONTEND_DIR, 'media')
     CSS_ROOT = os.path.join(FRONTEND_DIR, 'css')
 else:
