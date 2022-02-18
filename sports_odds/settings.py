@@ -156,8 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 
-USE_TZ = True
-TIME_ZONE = 'Etc/UTC'
+USE_TZ = False
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
