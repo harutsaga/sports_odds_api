@@ -633,7 +633,7 @@ def get_draftkings_market_nfl():
 
     M_DRAFT_NFL_FLAG = True
     while (True):
-        print("start.................", datetime.now())
+        # print("start.................", datetime.now())
             
         _list = []
         _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670561?format=json", "mlb": False})
@@ -650,7 +650,7 @@ def get_draftkings_market_nfl():
         except Exception as f:
             pass
 
-        print("end.................", datetime.now())
+        # print("end.................", datetime.now())
 
     M_DRAFT_NFL_FLAG = False
 
@@ -736,7 +736,7 @@ def fanduel_scrape_market(data):
             except Exception as g:
                 pass
         
-        print(data["link"], len(selectionInfo))
+        # print(data["link"], len(selectionInfo))
         saveSelectionInfo(selectionInfo)
     except:
         pass
@@ -755,7 +755,7 @@ def get_fanduel_market_mlb():
         try:
             _list = []
 
-            _api = f"https://sbapi.nj.sportsbook.fanduel.com/api/event-page?betexRegion=GBR&capiJurisdiction=intl&currencyCode=USD&exchangeLocale=en_US&includePrices=true&language=en&priceHistory=1&regionCode=NAMERICA&usePlayerPropsVirtualMarket=true&_ak=FhMFpcPWXMeyZxOx&eventId=31248261"
+            _api = f"https://sbapi.nj.sportsbook.fanduel.com/api/content-managed-page?betexRegion=GBR&capiJurisdiction=intl&currencyCode=USD&exchangeLocale=en_US&includePrices=true&includeRaceCards=false&includeSeo=true&language=en&regionCode=NAMERICA&timezone=America%2FNew_York&includeMarketBlurbs=true&_ak=FhMFpcPWXMeyZxOx&page=SPORT&eventTypeId=7511"
             _list.append({"link": _api,"mlb": True})
                     
             try:        
@@ -763,10 +763,7 @@ def get_fanduel_market_mlb():
                 pool.starmap(fanduel_scrape_market, zip(_list))
                 pool.close()
                 pool.join()
-
-                # for item in _list:
-                #     fanduel_scrape_market(item)
-                    
+             
             except Exception as f:
                 pass
         except:
