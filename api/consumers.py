@@ -14,7 +14,3 @@ class EventConsumer(JsonWebsocketConsumer):
             self.channel_name
         )
         self.close()
-
-    # def events_alarm(self, event):
-    #     # print('inside EventConsumer events_alarm()')
-    #     self.send_json(event)
