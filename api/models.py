@@ -53,8 +53,8 @@ class Event(models.Model):
     # event id
     e_id = models.CharField(max_length=255, null=True, db_index=True, help_text=_('ID of the event'))
 
-    # english name
-    english_name = models.CharField(max_length=255, null=True, db_index=True, help_text=_('Name of the event'))
+    # full name of the event
+    full_name = models.CharField(max_length=255, null=True, db_index=True, help_text=_('Name of the event'))
 
     def __str__(self):
         return f'{self.sports} - {self.league} - {self.name}'

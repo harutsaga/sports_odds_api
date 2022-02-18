@@ -8,7 +8,7 @@ Documentation of API for Sports Odds Integration v1.
 
 Base URLs:
 
-* <a href="http://localhost:8000/api">http://localhost:8000/api</a>
+- <a href="http://localhost:8000/api">http://localhost:8000/api</a>
 
 <h1 id="sports-odds-api-bookies">bookies</h1>
 
@@ -34,16 +34,14 @@ Get all supported bookies.
 > 200 Response
 
 ```json
-[
-  "string"
-]
+["string"]
 ```
 
 <h3 id="get_bookies-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Bookie names|Inline|
+| Status | Meaning                                                 | Description  | Schema |
+| ------ | ------------------------------------------------------- | ------------ | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Bookie names | Inline |
 
 <h3 id="get_bookies-responseschema">Response Schema</h3>
 
@@ -70,10 +68,10 @@ curl -X GET http://localhost:8000/api/event \
 
 <h3 id="event_list-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|page|query|integer|false|A page number within the paginated result set.|
-|page_size|query|integer|false|Number of results to return per page.|
+| Name      | In    | Type    | Required | Description                                    |
+| --------- | ----- | ------- | -------- | ---------------------------------------------- |
+| page      | query | integer | false    | A page number within the paginated result set. |
+| page_size | query | integer | false    | Number of results to return per page.          |
 
 > Example responses
 
@@ -81,69 +79,69 @@ curl -X GET http://localhost:8000/api/event \
 
 ```json
 {
-  "count": 0,
-  "total_pages": 0,
-  "next": "http://example.com",
-  "previous": "http://example.com",
-  "results": [
-    {
-      "id": 0,
-      "sports": "Basketball",
-      "league": "NBA",
-      "name": "string",
-      "startTime": "2019-08-24T14:15:22Z",
-      "updateTime": "2019-08-24T14:15:22Z",
-      "awayName": "string",
-      "homeName": "string",
-      "e_id": "string",
-      "english_name": "string"
-    }
-  ]
+	"count": 0,
+	"total_pages": 0,
+	"next": "http://example.com",
+	"previous": "http://example.com",
+	"results": [
+		{
+			"id": 0,
+			"sports": "Basketball",
+			"league": "NBA",
+			"name": "string",
+			"startTime": "2019-08-24T14:15:22Z",
+			"updateTime": "2019-08-24T14:15:22Z",
+			"awayName": "string",
+			"homeName": "string",
+			"e_id": "string",
+			"full_name": "string"
+		}
+	]
 }
 ```
 
 <h3 id="event_list-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| Status | Meaning                                                 | Description | Schema |
+| ------ | ------------------------------------------------------- | ----------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | Inline |
 
 <h3 id="event_list-responseschema">Response Schema</h3>
 
 Status Code **200**
 
-*PagedEvent*
+_PagedEvent_
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|false|none|none|
-|» total_pages|integer|false|none|none|
-|» next|string(uri)¦null|false|none|none|
-|» previous|string(uri)¦null|false|none|none|
-|» results|[[Event](#schemaevent)]|true|none|none|
-|»» id|integer|false|read-only|none|
-|»» sports|string|false|none|Sports|
-|»» league|string|false|none|League|
-|»» name|string|true|none|Name of the event. e.g., Metropolitan Division @ Atlantic Division|
-|»» startTime|string(date-time)¦null|false|none|Start time of the event|
-|»» updateTime|string(date-time)¦null|false|none|Updated time|
-|»» awayName|string¦null|false|none|Away team name|
-|»» homeName|string¦null|false|none|Home team name|
-|»» e_id|string¦null|false|none|ID of the event|
-|»» english_name|string¦null|false|none|Name of the event|
+| Name          | Type                    | Required | Restrictions | Description                                                        |
+| ------------- | ----------------------- | -------- | ------------ | ------------------------------------------------------------------ |
+| » count       | integer                 | false    | none         | none                                                               |
+| » total_pages | integer                 | false    | none         | none                                                               |
+| » next        | string(uri)¦null        | false    | none         | none                                                               |
+| » previous    | string(uri)¦null        | false    | none         | none                                                               |
+| » results     | [[Event](#schemaevent)] | true     | none         | none                                                               |
+| »» id         | integer                 | false    | read-only    | none                                                               |
+| »» sports     | string                  | false    | none         | Sports                                                             |
+| »» league     | string                  | false    | none         | League                                                             |
+| »» name       | string                  | true     | none         | Name of the event. e.g., Metropolitan Division @ Atlantic Division |
+| »» startTime  | string(date-time)¦null  | false    | none         | Start time of the event                                            |
+| »» updateTime | string(date-time)¦null  | false    | none         | Updated time                                                       |
+| »» awayName   | string¦null             | false    | none         | Away team name                                                     |
+| »» homeName   | string¦null             | false    | none         | Home team name                                                     |
+| »» e_id       | string¦null             | false    | none         | ID of the event                                                    |
+| »» full_name  | string¦null             | false    | none         | Name of the event                                                  |
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|sports|Basketball|
-|sports|Baseball|
-|sports|Ice Hockey|
-|sports|Football|
-|league|NBA|
-|league|MLB|
-|league|NHL|
-|league|NFL|
+| Property | Value      |
+| -------- | ---------- |
+| sports   | Basketball |
+| sports   | Baseball   |
+| sports   | Ice Hockey |
+| sports   | Football   |
+| league   | NBA        |
+| league   | MLB        |
+| league   | NHL        |
+| league   | NFL        |
 
 <aside class="success">
 This operation does not require authentication
@@ -173,16 +171,14 @@ Get all supported market types.
 > 200 Response
 
 ```json
-[
-  "string"
-]
+["string"]
 ```
 
 <h3 id="get_markets-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Market type names|Inline|
+| Status | Meaning                                                 | Description       | Schema |
+| ------ | ------------------------------------------------------- | ----------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Market type names | Inline |
 
 <h3 id="get_markets-responseschema">Response Schema</h3>
 
@@ -209,10 +205,10 @@ curl -X GET http://localhost:8000/api/selection \
 
 <h3 id="selection_list-parameters">Parameters</h3>
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|page|query|integer|false|A page number within the paginated result set.|
-|page_size|query|integer|false|Number of results to return per page.|
+| Name      | In    | Type    | Required | Description                                    |
+| --------- | ----- | ------- | -------- | ---------------------------------------------- |
+| page      | query | integer | false    | A page number within the paginated result set. |
+| page_size | query | integer | false    | Number of results to return per page.          |
 
 > Example responses
 
@@ -220,69 +216,69 @@ curl -X GET http://localhost:8000/api/selection \
 
 ```json
 {
-  "count": 0,
-  "total_pages": 0,
-  "next": "http://example.com",
-  "previous": "http://example.com",
-  "results": [
-    {
-      "id": 0,
-      "sports": "Basketball",
-      "league": "NBA",
-      "name": "string",
-      "startTime": "2019-08-24T14:15:22Z",
-      "updateTime": "2019-08-24T14:15:22Z",
-      "awayName": "string",
-      "homeName": "string",
-      "english_name": "string",
-      "target_bookies": "string"
-    }
-  ]
+	"count": 0,
+	"total_pages": 0,
+	"next": "http://example.com",
+	"previous": "http://example.com",
+	"results": [
+		{
+			"id": 0,
+			"sports": "Basketball",
+			"league": "NBA",
+			"name": "string",
+			"startTime": "2019-08-24T14:15:22Z",
+			"updateTime": "2019-08-24T14:15:22Z",
+			"awayName": "string",
+			"homeName": "string",
+			"full_name": "string",
+			"target_bookies": "string"
+		}
+	]
 }
 ```
 
 <h3 id="selection_list-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+| Status | Meaning                                                 | Description | Schema |
+| ------ | ------------------------------------------------------- | ----------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | none        | Inline |
 
 <h3 id="selection_list-responseschema">Response Schema</h3>
 
 Status Code **200**
 
-*PagedBookieLink*
+_PagedBookieLink_
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|» count|integer|false|none|none|
-|» total_pages|integer|false|none|none|
-|» next|string(uri)¦null|false|none|none|
-|» previous|string(uri)¦null|false|none|none|
-|» results|[[BookieLink](#schemabookielink)]|true|none|none|
-|»» id|integer|false|read-only|none|
-|»» sports|string|false|none|Sports|
-|»» league|string|false|none|League|
-|»» name|string|true|none|Name of the event. e.g., Metropolitan Division @ Atlantic Division|
-|»» startTime|string(date-time)¦null|false|none|Start time of the event|
-|»» updateTime|string(date-time)¦null|false|none|Updated time|
-|»» awayName|string¦null|false|none|Away team name|
-|»» homeName|string¦null|false|none|Home team name|
-|»» english_name|string¦null|false|none|Name of the event|
-|»» target_bookies|string|false|read-only|none|
+| Name              | Type                              | Required | Restrictions | Description                                                        |
+| ----------------- | --------------------------------- | -------- | ------------ | ------------------------------------------------------------------ |
+| » count           | integer                           | false    | none         | none                                                               |
+| » total_pages     | integer                           | false    | none         | none                                                               |
+| » next            | string(uri)¦null                  | false    | none         | none                                                               |
+| » previous        | string(uri)¦null                  | false    | none         | none                                                               |
+| » results         | [[BookieLink](#schemabookielink)] | true     | none         | none                                                               |
+| »» id             | integer                           | false    | read-only    | none                                                               |
+| »» sports         | string                            | false    | none         | Sports                                                             |
+| »» league         | string                            | false    | none         | League                                                             |
+| »» name           | string                            | true     | none         | Name of the event. e.g., Metropolitan Division @ Atlantic Division |
+| »» startTime      | string(date-time)¦null            | false    | none         | Start time of the event                                            |
+| »» updateTime     | string(date-time)¦null            | false    | none         | Updated time                                                       |
+| »» awayName       | string¦null                       | false    | none         | Away team name                                                     |
+| »» homeName       | string¦null                       | false    | none         | Home team name                                                     |
+| »» full_name      | string¦null                       | false    | none         | Name of the event                                                  |
+| »» target_bookies | string                            | false    | read-only    | none                                                               |
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|sports|Basketball|
-|sports|Baseball|
-|sports|Ice Hockey|
-|sports|Football|
-|league|NBA|
-|league|MLB|
-|league|NHL|
-|league|NFL|
+| Property | Value      |
+| -------- | ---------- |
+| sports   | Basketball |
+| sports   | Baseball   |
+| sports   | Ice Hockey |
+| sports   | Football   |
+| league   | NBA        |
+| league   | MLB        |
+| league   | NHL        |
+| league   | NFL        |
 
 <aside class="success">
 This operation does not require authentication
@@ -312,16 +308,14 @@ Get all supported sports types.
 > 200 Response
 
 ```json
-[
-  "string"
-]
+["string"]
 ```
 
 <h3 id="get_sports-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Sports type names|Inline|
+| Status | Meaning                                                 | Description       | Schema |
+| ------ | ------------------------------------------------------- | ----------------- | ------ |
+| 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Sports type names | Inline |
 
 <h3 id="get_sports-responseschema">Response Schema</h3>
 
@@ -348,37 +342,36 @@ updateTime: 2019-08-24T14:15:22Z
 awayName: string
 homeName: string
 e_id: string
-english_name: string
-
+full_name: string
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|integer|false|read-only|none|
-|sports|string|false|none|Sports|
-|league|string|false|none|League|
-|name|string|true|none|Name of the event. e.g., Metropolitan Division @ Atlantic Division|
-|startTime|string(date-time)¦null|false|none|Start time of the event|
-|updateTime|string(date-time)¦null|false|none|Updated time|
-|awayName|string¦null|false|none|Away team name|
-|homeName|string¦null|false|none|Home team name|
-|e_id|string¦null|false|none|ID of the event|
-|english_name|string¦null|false|none|Name of the event|
+| Name       | Type                   | Required | Restrictions | Description                                                        |
+| ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------ |
+| id         | integer                | false    | read-only    | none                                                               |
+| sports     | string                 | false    | none         | Sports                                                             |
+| league     | string                 | false    | none         | League                                                             |
+| name       | string                 | true     | none         | Name of the event. e.g., Metropolitan Division @ Atlantic Division |
+| startTime  | string(date-time)¦null | false    | none         | Start time of the event                                            |
+| updateTime | string(date-time)¦null | false    | none         | Updated time                                                       |
+| awayName   | string¦null            | false    | none         | Away team name                                                     |
+| homeName   | string¦null            | false    | none         | Home team name                                                     |
+| e_id       | string¦null            | false    | none         | ID of the event                                                    |
+| full_name  | string¦null            | false    | none         | Name of the event                                                  |
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|sports|Basketball|
-|sports|Baseball|
-|sports|Ice Hockey|
-|sports|Football|
-|league|NBA|
-|league|MLB|
-|league|NHL|
-|league|NFL|
+| Property | Value      |
+| -------- | ---------- |
+| sports   | Basketball |
+| sports   | Baseball   |
+| sports   | Ice Hockey |
+| sports   | Football   |
+| league   | NBA        |
+| league   | MLB        |
+| league   | NHL        |
+| league   | NFL        |
 
 <h2 id="tocS_BookieLink">BookieLink</h2>
 <!-- backwards compatibility -->
@@ -396,36 +389,34 @@ startTime: 2019-08-24T14:15:22Z
 updateTime: 2019-08-24T14:15:22Z
 awayName: string
 homeName: string
-english_name: string
+full_name: string
 target_bookies: string
-
 ```
 
 ### Properties
 
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|integer|false|read-only|none|
-|sports|string|false|none|Sports|
-|league|string|false|none|League|
-|name|string|true|none|Name of the event. e.g., Metropolitan Division @ Atlantic Division|
-|startTime|string(date-time)¦null|false|none|Start time of the event|
-|updateTime|string(date-time)¦null|false|none|Updated time|
-|awayName|string¦null|false|none|Away team name|
-|homeName|string¦null|false|none|Home team name|
-|english_name|string¦null|false|none|Name of the event|
-|target_bookies|string|false|read-only|none|
+| Name           | Type                   | Required | Restrictions | Description                                                        |
+| -------------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------ |
+| id             | integer                | false    | read-only    | none                                                               |
+| sports         | string                 | false    | none         | Sports                                                             |
+| league         | string                 | false    | none         | League                                                             |
+| name           | string                 | true     | none         | Name of the event. e.g., Metropolitan Division @ Atlantic Division |
+| startTime      | string(date-time)¦null | false    | none         | Start time of the event                                            |
+| updateTime     | string(date-time)¦null | false    | none         | Updated time                                                       |
+| awayName       | string¦null            | false    | none         | Away team name                                                     |
+| homeName       | string¦null            | false    | none         | Home team name                                                     |
+| full_name      | string¦null            | false    | none         | Name of the event                                                  |
+| target_bookies | string                 | false    | read-only    | none                                                               |
 
 #### Enumerated Values
 
-|Property|Value|
-|---|---|
-|sports|Basketball|
-|sports|Baseball|
-|sports|Ice Hockey|
-|sports|Football|
-|league|NBA|
-|league|MLB|
-|league|NHL|
-|league|NFL|
-
+| Property | Value      |
+| -------- | ---------- |
+| sports   | Basketball |
+| sports   | Baseball   |
+| sports   | Ice Hockey |
+| sports   | Football   |
+| league   | NBA        |
+| league   | MLB        |
+| league   | NHL        |
+| league   | NFL        |
