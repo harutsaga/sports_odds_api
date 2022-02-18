@@ -66,7 +66,7 @@ def saveSelectionInfo(_selectionInfo):
                     except:
                         pass
 
-                    if market is None:                        
+                    if market is None:
                         market = Market(self_market_id=_selection['self_market_id'], market_type=_selection['market_type'], self_event_id=_selection['self_event_id'])
                         market.save()
 
@@ -536,8 +536,7 @@ def draftkings_scrape_market(data):
 
             except Exception as e:                
                 pass
-        
-        print(len(selectionInfo))
+                
         saveSelectionInfo(selectionInfo)
         
         # print("started..........")
@@ -697,21 +696,21 @@ def fanduel_scrape_market(data):
 
         selectionInfo = []
 
-        marketNameList = ['Spread Betting', 'Total Points', 'Moneyline', 'Alternative Spreads', 'Spread', 'Total Match Points', 'Alternate Spread']
+        marketNameList = ['Spread Betting', 'Total Points', 'Moneyline', 'Alternative Spreads', 'Spread', 'Total Match Points', 'Alternate Spread', 'Puck Line', 'Total Goals']
         for market_id in result['attachments']['markets']:      
             try:      
                 market = result['attachments']['markets'][market_id]            
-                if market['marketName'] in marketNameList or mlb == True:
+                if market['marketName'] in marketNameList or mlb == True or 'Alternate Spread' in market['marketName']:
                     for selection in market["runners"]:
                         market_type = market['marketName']
 
-                        if market_type == "Total Points" or market_type == 'Total Match Points':
+                        if market_type == "Total Points" or market_type == 'Total Match Points' or market_type == 'Total Goals':
                             market_type = MarketType.TOTAL
                         elif market_type == "Moneyline":
                             market_type = MarketType.MONEYLINE
-                        elif market_type == "Spread Betting" or market_type == "Spread":
+                        elif market_type == "Spread Betting" or market_type == "Spread" or market_type == 'Puck Line':
                             market_type = MarketType.SPREAD
-                        elif market_type == "Alternative Spreads" or market_type == "Alternate Spread":
+                        elif market_type == "Alternative Spreads" or market_type == "Alternate Spread" or 'Alternate Spread' in market['marketName']:
                             market_type = MarketType.ALTERNATIVE_SPREAD
 
                         elif mlb == False:                                
@@ -726,17 +725,18 @@ def fanduel_scrape_market(data):
                             "market_type": market_type,
                             "line": getValue(selection, "handicap"),
                             "name": selection["runnerName"],
-                            "eventId": market["marketId"],
+                            "eventId": eventId,
                             "self_market_id": market["marketId"],
                             "updateTime": datetime.now(tz),
                             "odds": selection["winRunnerOdds"]["trueOdds"]["decimalOdds"]["decimalOdds"],
                             "oddsAmerican": selection["winRunnerOdds"]["americanDisplayOdds"]["americanOdds"],
-                            "self_event_id": market["marketId"]
+                            "self_event_id": eventId
                         })
                         
             except Exception as g:
                 pass
-                    
+        
+        print(data["link"], len(selectionInfo))
         saveSelectionInfo(selectionInfo)
     except:
         pass
@@ -755,7 +755,7 @@ def get_fanduel_market_mlb():
         try:
             _list = []
 
-            _api = f"https://sbapi.nj.sportsbook.fanduel.com/api/content-managed-page?betexRegion=GBR&capiJurisdiction=intl&currencyCode=USD&exchangeLocale=en_US&includePrices=true&includeRaceCards=false&includeSeo=true&language=en&regionCode=NAMERICA&timezone=America%2FNew_York&includeMarketBlurbs=true&_ak=FhMFpcPWXMeyZxOx&page=SPORT&eventTypeId=7511"
+            _api = f"https://sbapi.nj.sportsbook.fanduel.com/api/event-page?betexRegion=GBR&capiJurisdiction=intl&currencyCode=USD&exchangeLocale=en_US&includePrices=true&language=en&priceHistory=1&regionCode=NAMERICA&usePlayerPropsVirtualMarket=true&_ak=FhMFpcPWXMeyZxOx&eventId=31248261"
             _list.append({"link": _api,"mlb": True})
                     
             try:        
