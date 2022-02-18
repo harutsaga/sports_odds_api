@@ -33,7 +33,7 @@ services:
       - "8000"
     volumes:
       - ./:/home/user/app/
-      - ./static/:/home/user/static/
+      - ./static/:/home/user/staticfiles/
     env_file: .env
     depends_on:
       - db
@@ -101,4 +101,3 @@ services:
 
 volumes:
   staticfiles:
-  appupload:
