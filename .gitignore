@@ -47,7 +47,7 @@ coverage.xml
 *.log
 *.pot
 *.pyc
-__pycache__/
+**/__pycache__
 local_settings.py
 
 .env
@@ -56,11 +56,4 @@ venv/
 /db.sqlite
 
 **/migrations/0*.py
-djangoproject.log
-<<<<<<< HEAD
-/api/migrations/__pycache__
 /djangoproject.log
-=======
-
-**/*.pyc
->>>>>>> e0c7a0f4c34a52158d4796706cc707c4e538600c
