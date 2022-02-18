@@ -210,7 +210,7 @@ definitions:
         maxLength: 255
         minLength: 1
         x-nullable: true
-      english_name:
+      full_name:
         title: English name
         description: Name of the event
         type: string
@@ -274,7 +274,7 @@ definitions:
         type: string
         maxLength: 255
         x-nullable: true
-      english_name:
+      full_name:
         title: English name
         description: Name of the event
         type: string

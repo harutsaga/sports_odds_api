@@ -43,7 +43,7 @@ class BookieLinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['id', 'sports', 'league', 'name', 'startTime', 'updateTime', 'awayName', 'homeName', 'english_name', 'target_bookies']
+        fields = ['id', 'sports', 'league', 'name', 'startTime', 'updateTime', 'awayName', 'homeName', 'full_name', 'target_bookies']
 
     def get_target_bookies(self, obj):
         try:            

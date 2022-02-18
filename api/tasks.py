@@ -111,7 +111,7 @@ def saveBookieEvent(_eventList, bookieType):
 
                     if comp is None:                        
                         try:
-                            comp = Event.objects.get(startTime__range=(event['startTime'] - delta, event['startTime'] + delta), sports=event['sports'], league=event['league'], english_name=name)
+                            comp = Event.objects.get(startTime__range=(event['startTime'] - delta, event['startTime'] + delta), sports=event['sports'], league=event['league'], full_name=name)
                         except:
                             pass
 
@@ -165,19 +165,19 @@ def get_event_info(_url, _sports, _league):
         eventList = []
         for _event in result['events']:            
             try:
-                english_name = None
+                full_name = None
 
                 try:
-                    english_name = _event['event']['englishName']
-                    f = english_name.split('-')
-                    english_name = f"{f[1]} - {f[0]}".strip()
+                    full_name = _event['event']['englishName']
+                    f = full_name.split('-')
+                    full_name = f"{f[1]} - {f[0]}".strip()
                 except:
                     pass
 
                 eventList.append({
                     "eventId": _event['event']['id'],
                     "name": replaceDeter(_event['event']['name']),
-                    "english_name": english_name,
+                    "full_name": full_name,
                     "startTime": parser.parse(_event['event']["start"]),
                     "updateTime": datetime.now(tz),
                     "awayName": getValue(_event['event'],"awayName"),
@@ -193,13 +193,13 @@ def get_event_info(_url, _sports, _league):
                 count = Event.objects.filter(e_id=event['eventId']).count()
 
                 if count == 0:
-                    r = Event(english_name=event['english_name'], e_id=event['eventId'], name=event['name'], startTime=event['startTime'], updateTime=event['updateTime'], awayName=event['awayName'], homeName=event['homeName'], sports=event['sports'], league=event['league'])
+                    r = Event(full_name=event['full_name'], e_id=event['eventId'], name=event['name'], startTime=event['startTime'], updateTime=event['updateTime'], awayName=event['awayName'], homeName=event['homeName'], sports=event['sports'], league=event['league'])
                     r.save()
                 else:
                     _e = Event.objects.get(e_id=event['eventId'])
                     _e.startTime = event['startTime']
                     _e.updateTime = event['updateTime']
-                    _e.english_name = event['english_name']
+                    _e.full_name = event['full_name']
                     _e.name = event['name']
                     _e.save()
             except:                
