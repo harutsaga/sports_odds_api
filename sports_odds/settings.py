@@ -126,23 +126,9 @@ SWAGGER_SETTINGS = {
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-<<<<<<< HEAD
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_sports_odds',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        },
-    },
-=======
      'default': dj_database_url.config(
         default=config('DATABASE_URL')
     ),
->>>>>>> e0c7a0f4c34a52158d4796706cc707c4e538600c
 }
 
 # async setting

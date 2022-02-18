@@ -10,6 +10,7 @@ from dateutil import parser, tz
 from datetime import datetime, timedelta, timezone, date
 import pytz
 from django.db.models import Q
+import sys
 
 tz = pytz.timezone("Etc/UTC")
 
@@ -74,10 +75,16 @@ def saveSelectionInfo(_selectionInfo):
                     
 
                 else:
+                    if selection.odds == _selection['odds'] and selection.line == _selection['line']:
+                        selection.updateTime = datetime.now(tz)
+                        selection.save()
+
+                        pass
+
                     selection.odds = _selection['odds']
                     selection.oddsAmerican = _selection['oddsAmerican']
                     selection.line = _selection['line']
-                    selection.name = _selection['name']
+                    # selection.name = _selection['name']
                     selection.updateTime = datetime.now(tz)
                     selection.save()
 
@@ -530,8 +537,10 @@ def draftkings_scrape_market(data):
             except Exception as e:                
                 pass
         
+        print(len(selectionInfo))
         saveSelectionInfo(selectionInfo)
         
+        # print("started..........")
     except:
         pass
 
@@ -570,13 +579,13 @@ def get_draftkings_market_mlb():
                 pass
 
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap_async(draftkings_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
+                pool = ThreadPool(5)
+                pool.starmap_async(draftkings_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
 
-                for item in _list:
-                    draftkings_scrape_market(item)
+                # for item in _list:
+                #     draftkings_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -603,12 +612,12 @@ def get_draftkings_market_nba():
         _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670846?format=json", "mlb": False})
         _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670846/categories/487/subcategories/4606?format=json", "mlb": False})
         try:        
-            # pool = ThreadPool(2)
-            # pool.starmap(draftkings_scrape_market, zip(_list))
-            # pool.close()
-            # pool.join()
-            for item in _list:
-                draftkings_scrape_market(item)
+            pool = ThreadPool(5)
+            pool.starmap(draftkings_scrape_market, zip(_list))
+            pool.close()
+            pool.join()
+            # for item in _list:
+            #     draftkings_scrape_market(item)
 
         except Exception as f:
             pass
@@ -631,14 +640,14 @@ def get_draftkings_market_nfl():
         _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670561?format=json", "mlb": False})
         _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670561/categories/492/subcategories/9909?format=json", "mlb": False})
         try:        
-            # pool = ThreadPool(2)
-            # pool.starmap(draftkings_scrape_market, zip(_list))
-            # pool.close()
-            # pool.join()
+            pool = ThreadPool(5)
+            pool.starmap(draftkings_scrape_market, zip(_list))
+            pool.close()
+            pool.join()
 
-            for item in _list:
-                print("save.................", datetime.now())
-                draftkings_scrape_market(item)
+            # for item in _list:
+            #     print("save.................", datetime.now())
+            #     draftkings_scrape_market(item)
         except Exception as f:
             pass
 
@@ -651,28 +660,31 @@ M_DRAFT_NHL_FLAG = False
 @shared_task
 def get_draftkings_market_nhl():
     global M_DRAFT_NHL_FLAG
+
+    _list = []
+    _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670853?format=json", "mlb": False})
+    _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670853/categories/496/subcategories/5680?format=json", "mlb": False})
+    
     if M_DRAFT_NHL_FLAG == True:
         return
 
     M_DRAFT_NHL_FLAG = True
-
-    while (True):
-        _list = []
-        _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670853?format=json", "mlb": False})
-        _list.append({"link": f"https://sportsbook.draftkings.com//sites/US-SB/api/v4/eventgroups/88670853/categories/496/subcategories/5680?format=json", "mlb": False})
-        try:        
-            # pool = ThreadPool(2)
-            # pool.starmap(draftkings_scrape_market, zip(_list))
-            # pool.close()
-            # pool.join()
-
-            for item in _list:            
-                draftkings_scrape_market(item)
-        except Exception as f:
-            pass
     
-    M_DRAFT_NHL_FLAG = False
+    while (True):        
+        try:            
+            # start = time.time()            
 
+            pool = ThreadPool(5)
+            pool.starmap(draftkings_scrape_market, zip(_list))            
+            pool.close()
+            pool.join()
+            
+            # end = time.time()
+            # print('Time taken in seconds -', end - start)
+        except Exception as f:
+            pass    
+
+    M_DRAFT_NHL_FLAG = False
 # fanduel
 def fanduel_scrape_market(data):
     try:
@@ -747,13 +759,13 @@ def get_fanduel_market_mlb():
             _list.append({"link": _api,"mlb": True})
                     
             try:        
-                # pool = ThreadPool(1)
-                # pool.starmap(fanduel_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
+                pool = ThreadPool(1)
+                pool.starmap(fanduel_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
 
-                for item in _list:
-                    fanduel_scrape_market(item)
+                # for item in _list:
+                #     fanduel_scrape_market(item)
                     
             except Exception as f:
                 pass
@@ -795,12 +807,12 @@ def get_fanduel_market_nba():
                             })  
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(fanduel_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    fanduel_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(fanduel_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     fanduel_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -839,12 +851,12 @@ def get_fanduel_market_nfl():
                             })  
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(fanduel_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    fanduel_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(fanduel_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     fanduel_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -883,12 +895,12 @@ def get_fanduel_market_nhl():
                             })  
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(fanduel_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    fanduel_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(fanduel_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     fanduel_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -1002,13 +1014,13 @@ def get_twinspires_market_mlb():
                                 })        
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(twinspires_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
+                pool = ThreadPool(5)
+                pool.starmap(twinspires_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
 
-                for item in _list:
-                    twinspires_scrape_market(item)
+                # for item in _list:
+                #     twinspires_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -1048,12 +1060,12 @@ def get_twinspires_market_nba():
                                 })        
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(twinspires_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    twinspires_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(twinspires_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     twinspires_scrape_market(item)
                     
             except Exception as f:            
                 pass
@@ -1093,12 +1105,12 @@ def get_twinspires_market_nfl():
                                 })        
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(twinspires_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    twinspires_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(twinspires_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     twinspires_scrape_market(item)
 
             except Exception as f:            
                 pass
@@ -1139,12 +1151,12 @@ def get_twinspires_market_nhl():
                                 })        
             
             try:        
-                # pool = ThreadPool(2)
-                # pool.starmap(twinspires_scrape_market, zip(_list))
-                # pool.close()
-                # pool.join()
-                for item in _list:
-                    twinspires_scrape_market(item)
+                pool = ThreadPool(5)
+                pool.starmap(twinspires_scrape_market, zip(_list))
+                pool.close()
+                pool.join()
+                # for item in _list:
+                #     twinspires_scrape_market(item)
 
             except Exception as f:            
                 pass
