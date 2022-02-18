@@ -166,8 +166,8 @@ CSS_URL = '/css/'
 if USE_DOCKER:
     # for docker
     STATICFILES_DIRS = [
-        FRONTEND_DIR,
-        os.path.join(FRONTEND_DIR, 'static')
+        os.path.join(BACKEND_DIR, 'static')
+        # os.path.join(FRONTEND_DIR, 'static')
     ]
     STATIC_ROOT = '/home/user/static'
     MEDIA_ROOT = os.path.join(FRONTEND_DIR, 'media')
