@@ -57,3 +57,5 @@ venv/
 
 **/migrations/0*.py
 djangoproject.log
+
+**/*.pyc
